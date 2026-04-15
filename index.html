@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Forward Operators · Production AI pipelines for professional firms</title>
+<meta name="description" content="Production AI pipelines for professional firms and mid-market companies in Latin America. Fixed price, two weeks, code you own." />
+<meta name="keywords" content="AI automation for accounting firms, AI for law firms, AFIP pipelines, Official Gazette automation, AI consulting Buenos Aires, production LLM pipelines, LATAM AI engineering" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="author" content="Mateo Cafferata Pardina" />
+<link rel="canonical" href="https://forwardoperators.us/" />
+<link rel="preload" href="foto-mateo.webp" as="image" />
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="apple-touch-icon" href="favicon.png" />
+<meta name="theme-color" content="#0B1220" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://forwardoperators.us/" />
+<meta property="og:site_name" content="Forward Operators" />
+<meta property="og:title" content="Forward Operators · Production AI pipelines" />
+<meta property="og:description" content="AI automation for professional firms and SMBs. Fixed price, two weeks, code you own." />
+<meta property="og:image" content="https://forwardoperators.us/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Forward Operators" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="es_AR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Forward Operators · Production AI pipelines" />
+<meta name="twitter:description" content="AI automation for professional firms and SMBs." />
+<meta name="twitter:image" content="https://forwardoperators.us/og.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://forwardoperators.us/#org",
+      "name": "Forward Operators",
+      "url": "https://forwardoperators.us/",
+      "image": "https://forwardoperators.us/og.png",
+      "logo": "https://forwardoperators.us/favicon.png",
+      "description": "We build and ship production AI pipelines for professional firms and mid-market companies in Latin America. Fixed price, two weeks, code you own.",
+      "areaServed": [
+        { "@type": "Country", "name": "Argentina" },
+        { "@type": "Place", "name": "Latin America" }
+      ],
+      "priceRange": "$$",
+      "founder": { "@id": "https://forwardoperators.us/#mateo" },
+      "sameAs": [
+        "https://linkedin.com/in/mateo-cafferata"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://forwardoperators.us/#mateo",
+      "name": "Mateo Cafferata Pardina",
+      "jobTitle": "Founder, AI Engineer",
+      "affiliation": { "@type": "CollegeOrUniversity", "name": "UCEMA" },
+      "worksFor": { "@id": "https://forwardoperators.us/#org" },
+      "url": "https://forwardoperators.us/#about",
+      "sameAs": ["https://linkedin.com/in/mateo-cafferata"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://forwardoperators.us/#website",
+      "url": "https://forwardoperators.us/",
+      "name": "Forward Operators",
+      "inLanguage": "en-US",
+      "publisher": { "@id": "https://forwardoperators.us/#org" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How much does it cost?", "acceptedAnswer": { "@type": "Answer", "text": "Diagnostic call: free. Two-week pilot: from USD 3,500. Full program (3 to 5 processes, 6 to 10 weeks): from USD 12,000. Fixed price agreed before we start. No usage fees, no escalating invoices." } },
+        { "@type": "Question", "name": "What about sensitive data? Does it go to OpenAI?", "acceptedAnswer": { "@type": "Answer", "text": "It depends. For public data (Official Gazette, INPI, AFIP) we use commercial APIs with no-training clauses. For case files, contracts or client data we run local models with zero egress. We sign an NDA and the architecture stays documented and auditable. If compliance requires it, we route you to Sovereign (dedicated infrastructure)." } },
+        { "@type": "Question", "name": "Why not just use ChatGPT directly?", "acceptedAnswer": { "@type": "Answer", "text": "A chat helps you draft. A pipeline does the work without anyone copy-pasting and reviewing. It runs by itself, integrates with your systems, audits results, and scales without adding headcount. The difference shows up on your invoices." } },
+        { "@type": "Question", "name": "Who owns the code?", "acceptedAnswer": { "@type": "Answer", "text": "You do, in a repo of yours, from day one. No vendor lock-in, no 'you have to pay me to access your own system'. You can continue solo, switch providers, or take the pipeline anywhere." } }
+      ]
+    }
+  ]
+}
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer data-domain="forwardoperators.us" src="https://plausible.io/js/script.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0B1220',
+          paper: '#F7F5F0',
+          rule: '#E4E1D8',
+          muted: '#5B6470',
+          warm: '#EFE7D6',
+          accent: '#D24B1F',
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #F7F5F0; color: #0B1220; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  .headline { font-family: 'Instrument Serif', Georgia, serif; letter-spacing: -0.015em; line-height: 0.95; font-weight: 400; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #5B6470; }
+  .hairline { border-color: #E4E1D8; }
+  .btn-primary { background: #0B1220; color: #F7F5F0; transition: transform .2s cubic-bezier(.2,.8,.2,1), background .2s ease; }
+  .btn-primary:hover { background: #000; transform: translateY(-1px); }
+  .btn-ghost { color: #0B1220; border: 1px solid #0B1220; transition: background .2s ease, color .2s ease; }
+  .btn-ghost:hover { background: #0B1220; color: #F7F5F0; }
+
+  @keyframes drift { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(20px,-20px) scale(1.05); } }
+  @keyframes drift2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-30px,15px) scale(1.08); } }
+  @keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .blob-1 { animation: drift 22s ease-in-out infinite; }
+  .blob-2 { animation: drift2 28s ease-in-out infinite; }
+  .rotate-slow { animation: rotateSlow 120s linear infinite; transform-origin: center; }
+  @media (prefers-reduced-motion: reduce) {
+    .blob-1, .blob-2, .rotate-slow { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.4; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.05  0 0 0 0 0.07  0 0 0 0 0.13  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .rule-lines { background-image: linear-gradient(to right, rgba(11,18,32,0.06) 1px, transparent 1px); background-size: 100px 100%; }
+
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] summary .chev { transform: rotate(45deg); }
+  .chev { transition: transform .2s ease; display: inline-block; }
+
+  .underline-draw { position: relative; }
+  .underline-draw::after { content:''; position:absolute; left:0; right:0; bottom:-2px; height:1px; background:currentColor; transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+  .underline-draw:hover::after { transform: scaleX(1); }
+
+  @media (max-width: 640px) {
+    .headline { letter-spacing: -0.02em; }
+    section { padding-left: 0; padding-right: 0; }
+    .max-w-\[1280px\], .max-w-6xl, .max-w-5xl, .max-w-4xl { padding-left: 20px; padding-right: 20px; }
+    img, svg { max-width: 100%; height: auto; }
+  }
+  @media (max-width: 400px) {
+    h1.headline { font-size: 38px !important; }
+  }
+
+  .pipe-node { transition: transform .2s ease; }
+  .pipe-node:hover { transform: translateY(-3px); }
+
+  .italic-serif { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+</style>
+</head>
+<body class="font-sans relative">
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-ink focus:text-paper focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="border-b hairline bg-paper/80 backdrop-blur sticky top-0 z-40">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3" aria-label="Forward Operators home">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="10" stroke="#0B1220" stroke-width="1"/><path d="M6 11 L16 11 M11 6 L16 11 L11 16" stroke="#0B1220" stroke-width="1" stroke-linecap="round"/></svg>
+      <span class="font-medium tracking-tight">Forward Operators</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-ink/75" aria-label="Main">
+      <a href="#services" class="underline-draw">Services</a>
+      <a href="#case" class="underline-draw">Case study</a>
+      <a href="#process" class="underline-draw">Process</a>
+      <a href="#why-now" class="underline-draw">Research</a>
+      <a href="#about" class="underline-draw">About</a>
+      <a href="#privacy" class="underline-draw">Privacy</a>
+      <a href="#sovereign" class="underline-draw flex items-center gap-1.5">Sovereign <span class="text-[9px] tracking-wider px-1.5 py-0.5 rounded bg-accent/10 text-accent font-medium uppercase">Soon</span></a>
+      <a href="#faq" class="underline-draw">FAQ</a>
+    </nav>
+    <a href="#contact" class="btn-primary text-sm px-4 py-2 rounded-full">Book a call</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section id="top" class="relative overflow-hidden">
+  <div class="absolute inset-0 -z-10 pointer-events-none">
+    <div class="blob-1 absolute -top-32 -left-32 w-[640px] h-[640px] rounded-full" style="background: radial-gradient(closest-side, rgba(210,75,31,0.14), rgba(210,75,31,0) 70%);"></div>
+    <div class="blob-2 absolute top-40 -right-40 w-[720px] h-[720px] rounded-full" style="background: radial-gradient(closest-side, rgba(11,18,32,0.08), rgba(11,18,32,0) 70%);"></div>
+    <div class="absolute inset-0 rule-lines opacity-70"></div>
+
+    <svg class="absolute right-[-120px] top-[60px] w-[780px] h-[780px] opacity-[0.9]" viewBox="0 0 800 800" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#0B1220" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#0B1220" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="dotGrad" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0%" stop-color="#D24B1F" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#D24B1F" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <g class="rotate-slow" stroke="url(#lineGrad)" stroke-width="0.7" fill="none">
+        <ellipse cx="400" cy="400" rx="360" ry="140" />
+        <ellipse cx="400" cy="400" rx="320" ry="180" transform="rotate(30 400 400)" />
+        <ellipse cx="400" cy="400" rx="280" ry="220" transform="rotate(60 400 400)" />
+        <ellipse cx="400" cy="400" rx="240" ry="260" transform="rotate(90 400 400)" />
+      </g>
+      <g fill="#0B1220">
+        <circle cx="760" cy="400" r="3" />
+        <circle cx="40"  cy="400" r="2" />
+        <circle cx="400" cy="40"  r="2.5" />
+        <circle cx="400" cy="760" r="2" />
+      </g>
+      <circle cx="400" cy="400" r="180" fill="url(#dotGrad)" />
+      <circle cx="400" cy="400" r="6" fill="#0B1220"/>
+      <circle cx="400" cy="400" r="14" stroke="#0B1220" stroke-width="0.6" fill="none"/>
+    </svg>
+
+    <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+      <g stroke="#0B1220" stroke-width="0.5" stroke-opacity="0.18" fill="none">
+        <path d="M0 720 Q 400 640 800 700 T 1440 620"/>
+        <path d="M0 780 Q 500 820 1000 740 T 1440 800"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="relative max-w-[1280px] mx-auto px-6 md:px-10 pt-24 md:pt-36 pb-24 md:pb-36">
+    <div class="flex items-center gap-3 mb-10">
+      <span class="w-2 h-2 rounded-full bg-accent" aria-hidden="true"></span>
+      <p class="eyebrow">Córdoba · Buenos Aires · LATAM</p>
+    </div>
+
+    <h1 class="headline text-[44px] leading-[0.95] sm:text-6xl md:text-[84px] lg:text-[104px] max-w-[18ch]">
+      AI already automates <br class="hidden md:block"/>
+      <span class="italic-serif text-ink/80">the work</span> inside your firm.<br class="hidden md:block"/>
+      We put it <span class="italic-serif text-ink/80">into production.</span>
+    </h1>
+
+    <div class="mt-12 md:mt-16 grid md:grid-cols-12 gap-8 items-end">
+      <p class="md:col-span-6 text-lg md:text-xl text-ink/75 leading-relaxed max-w-[48ch]">
+        We build real AI pipelines for professional firms and companies across Latin America: invoicing, reconciliation, data extraction, commercial intelligence. Fixed price, two weeks, code you own.
+      </p>
+      <div class="md:col-span-6 flex flex-wrap items-center gap-3 md:justify-end">
+        <a href="#contact" class="btn-primary px-6 py-3 rounded-full text-sm font-medium">Book a 15-min call →</a>
+        <a href="#case" class="btn-ghost px-6 py-3 rounded-full text-sm font-medium">See the Eguia case →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF STRIP -->
+<section class="border-y hairline bg-white/60 backdrop-blur" aria-label="Social proof">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-10 grid md:grid-cols-12 gap-8 items-center">
+    <div class="md:col-span-6 flex items-center gap-5">
+      <p class="eyebrow whitespace-nowrap">Trusted by</p>
+      <div class="h-8 w-px bg-rule" aria-hidden="true"></div>
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-ink text-paper flex items-center justify-center font-serif text-base" aria-hidden="true">E</div>
+        <div>
+          <div class="font-medium text-ink text-sm">Eguia Marcas y Patentes</div>
+          <div class="text-xs text-muted">Intellectual property · Argentina</div>
+        </div>
+      </div>
+    </div>
+    <div class="md:col-span-6 md:border-l md:hairline md:pl-8 flex items-center gap-5">
+      <p class="eyebrow whitespace-nowrap">Research</p>
+      <div class="h-8 w-px bg-rule hidden md:block" aria-hidden="true"></div>
+      <a href="#why-now" class="group flex items-baseline gap-2">
+        <span class="text-ink font-medium text-sm">Labor displacement from AGI</span>
+        <span class="text-xs text-muted">· UCEMA 2026</span>
+        <span class="ml-1 text-ink/60 group-hover:translate-x-0.5 transition inline-block" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="relative py-28 md:py-40">
+  <svg class="absolute left-0 top-20 w-[280px] h-[280px] -translate-x-1/3 opacity-60 pointer-events-none" viewBox="0 0 300 300" aria-hidden="true">
+    <g stroke="#0B1220" stroke-width="0.6" fill="none" opacity="0.4">
+      <circle cx="150" cy="150" r="140"/>
+      <circle cx="150" cy="150" r="100"/>
+      <circle cx="150" cy="150" r="60"/>
+      <line x1="10" y1="150" x2="290" y2="150"/>
+      <line x1="150" y1="10" x2="150" y2="290"/>
+    </g>
+  </svg>
+
+  <div class="relative max-w-[1280px] mx-auto px-6 md:px-10">
+    <div class="grid md:grid-cols-12 gap-12 md:gap-20">
+      <div class="md:col-span-5">
+        <p class="eyebrow mb-6">Services · 01</p>
+        <h2 class="headline text-4xl md:text-6xl">
+          Pipelines that <span class="italic-serif">already handle</span> real work.
+        </h2>
+        <p class="mt-8 text-ink/70 leading-relaxed max-w-md">
+          Each one ships in two weeks, runs in your stack, and the code lives in a repository you own. If we miss the agreed milestone, the next one is on us.
+        </p>
+      </div>
+      <div class="md:col-span-7 grid sm:grid-cols-2 gap-px bg-rule rounded-2xl overflow-hidden border hairline">
+        <div class="bg-paper p-8 md:p-10 relative">
+          <div class="absolute top-6 right-6 font-mono text-[10px] text-muted tracking-widest">01</div>
+          <svg width="28" height="28" viewBox="0 0 28 28" class="mb-8" aria-hidden="true"><rect x="4" y="6" width="20" height="16" rx="2" stroke="#0B1220" fill="none"/><path d="M4 11 L24 11 M10 16 L18 16 M10 19 L16 19" stroke="#0B1220" stroke-width="1"/></svg>
+          <h3 class="text-xl font-medium mb-3 tracking-tight">AFIP / ARCA pipeline</h3>
+          <p class="text-ink/70 text-sm leading-relaxed">Automated extraction, validation, issuance and reconciliation of invoices. Processing errors close to zero.</p>
+        </div>
+        <div class="bg-paper p-8 md:p-10 relative">
+          <div class="absolute top-6 right-6 font-mono text-[10px] text-muted tracking-widest">02</div>
+          <svg width="28" height="28" viewBox="0 0 28 28" class="mb-8" aria-hidden="true"><circle cx="10" cy="10" r="5" stroke="#0B1220" fill="none"/><circle cx="20" cy="20" r="3" stroke="#0B1220" fill="none"/><path d="M14 13 L17 17" stroke="#0B1220"/></svg>
+          <h3 class="text-xl font-medium mb-3 tracking-tight">Official Gazette to CRM</h3>
+          <p class="text-ink/70 text-sm leading-relaxed">Newly registered companies (SAS / SA / SRL), enriched with contact data and delivered as qualified leads every day.</p>
+        </div>
+        <div class="bg-paper p-8 md:p-10 relative">
+          <div class="absolute top-6 right-6 font-mono text-[10px] text-muted tracking-widest">03</div>
+          <svg width="28" height="28" viewBox="0 0 28 28" class="mb-8" aria-hidden="true"><path d="M4 20 L10 12 L16 16 L24 6" stroke="#0B1220" stroke-width="1.2" fill="none" stroke-linecap="round"/><circle cx="4" cy="20" r="1.5" fill="#0B1220"/><circle cx="24" cy="6" r="1.5" fill="#D24B1F"/></svg>
+          <h3 class="text-xl font-medium mb-3 tracking-tight">Bank reconciliation</h3>
+          <p class="text-ink/70 text-sm leading-relaxed">Automatic matching between bank statements and bookkeeping. Work that used to take days now takes minutes. Exceptions are flagged for human review.</p>
+        </div>
+        <div class="bg-paper p-8 md:p-10 flex flex-col justify-between relative">
+          <div>
+            <div class="absolute top-6 right-6 font-mono text-[10px] text-muted tracking-widest">04</div>
+            <svg width="28" height="28" viewBox="0 0 28 28" class="mb-8" aria-hidden="true"><circle cx="12" cy="12" r="7" stroke="#0B1220" fill="none"/><path d="M17 17 L23 23" stroke="#0B1220" stroke-linecap="round"/><circle cx="12" cy="12" r="2" fill="#D24B1F"/></svg>
+            <h3 class="text-xl font-medium mb-3 tracking-tight">Trademark monitoring</h3>
+            <p class="text-ink/70 text-sm leading-relaxed">Phonetic and visual similarity detection with transformer embeddings, FAISS-GPU and Elasticsearch. Built for IP firms monitoring 10k+ records.</p>
+          </div>
+          <a href="#contact" class="text-ink text-sm font-medium mt-8 inline-flex items-center gap-1 hover:gap-2 transition-all">Let's talk →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-24 relative">
+      <p class="eyebrow mb-10 text-center">How a pipeline works</p>
+      <svg class="absolute inset-0 w-full h-full hidden md:block pointer-events-none" viewBox="0 0 1200 140" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M200 70 Q 400 20 600 70 T 1000 70" stroke="#0B1220" stroke-opacity="0.3" stroke-dasharray="3 4" fill="none"/>
+      </svg>
+      <div class="grid grid-cols-3 gap-6 md:gap-10 items-center relative">
+        <div class="pipe-node text-center">
+          <div class="aspect-square max-w-[120px] mx-auto rounded-2xl border hairline bg-white flex items-center justify-center">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="8" y="6" width="20" height="24" rx="1.5" stroke="#0B1220" stroke-width="1"/><path d="M12 13 H24 M12 17 H24 M12 21 H20" stroke="#0B1220" stroke-width="0.8"/></svg>
+          </div>
+          <p class="mt-5 text-xs text-muted font-mono tracking-widest">RAW DATA</p>
+          <p class="text-sm text-ink mt-1">PDFs, emails, scrapes</p>
+        </div>
+        <div class="pipe-node text-center">
+          <div class="aspect-square max-w-[120px] mx-auto rounded-2xl border hairline bg-white flex items-center justify-center">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="14" stroke="#0B1220" stroke-width="1"/><circle cx="20" cy="20" r="8" stroke="#0B1220" stroke-width="1"/><circle cx="20" cy="20" r="2" fill="#D24B1F"/></svg>
+          </div>
+          <p class="mt-5 text-xs text-muted font-mono tracking-widest">PIPELINE</p>
+          <p class="text-sm text-ink mt-1">LLM + rules + validation</p>
+        </div>
+        <div class="pipe-node text-center">
+          <div class="aspect-square max-w-[120px] mx-auto rounded-2xl bg-ink text-paper flex items-center justify-center">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M10 18 L16 24 L26 12" stroke="#F7F5F0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p class="mt-5 text-xs text-muted font-mono tracking-widest">OUTPUT</p>
+          <p class="text-sm text-ink mt-1">Structured, inside your system</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE -->
+<section id="case" class="relative py-28 md:py-40 bg-white border-y hairline overflow-hidden">
+  <svg class="absolute -right-40 top-20 w-[600px] h-[600px] opacity-40 pointer-events-none" viewBox="0 0 600 600" aria-hidden="true">
+    <g stroke="#0B1220" stroke-width="0.5" fill="none">
+      <path d="M0 300 Q 150 150 300 300 T 600 300"/>
+      <path d="M0 350 Q 150 200 300 350 T 600 350"/>
+      <path d="M0 400 Q 150 250 300 400 T 600 400"/>
+      <path d="M0 450 Q 150 300 300 450 T 600 450"/>
+    </g>
+  </svg>
+
+  <div class="relative max-w-[1280px] mx-auto px-6 md:px-10 grid md:grid-cols-12 gap-12 md:gap-20">
+    <div class="md:col-span-5">
+      <p class="eyebrow mb-6">Case · 02</p>
+      <h2 class="headline text-4xl md:text-6xl leading-tight">Eguia Marcas <span class="italic-serif">y</span> Patentes</h2>
+      <p class="mt-5 text-muted">Intellectual property firm · Argentina</p>
+      <p class="mt-10 text-ink/80 leading-relaxed">
+        A trademark and patent firm processes hundreds of INPI notifications, expirations and official filings every week. Most of the work is reading, classifying and typing data in by hand.
+      </p>
+      <p class="mt-4 text-ink/80 leading-relaxed">
+        We designed a pipeline that automates the full flow, from ingesting official documents to updating the internal system, with alerts for the cases that require human judgment.
+      </p>
+      <a href="#contact" class="btn-ghost mt-10 inline-flex px-5 py-2.5 rounded-full text-sm font-medium">Book a similar call →</a>
+    </div>
+    <div class="md:col-span-7">
+      <div class="border hairline rounded-3xl overflow-hidden bg-paper">
+        <div class="grid grid-cols-3 divide-x divide-rule">
+          <div class="p-6 md:p-8">
+            <div class="headline text-4xl md:text-5xl text-ink">60+</div>
+            <p class="text-[10px] text-muted mt-3 font-mono tracking-widest">HOURS / MONTH SAVED</p>
+          </div>
+          <div class="p-6 md:p-8">
+            <div class="headline text-4xl md:text-5xl text-ink">30k+</div>
+            <p class="text-[10px] text-muted mt-3 font-mono tracking-widest">TRADEMARKS MONITORED</p>
+          </div>
+          <div class="p-6 md:p-8">
+            <div class="headline text-4xl md:text-5xl text-ink">2 wks</div>
+            <p class="text-[10px] text-muted mt-3 font-mono tracking-widest">PILOT TO PRODUCTION</p>
+          </div>
+        </div>
+        <div class="bg-white p-8 md:p-10 border-t hairline">
+          <p class="eyebrow mb-6">Pipelines in production</p>
+          <ul class="space-y-4 text-ink/80 text-sm leading-relaxed">
+            <li class="flex gap-4"><span class="font-mono text-[10px] text-muted mt-1.5 tracking-widest shrink-0">01</span><span><span class="text-ink font-medium">AFIP / ARCA invoicing</span>: automatic issuance and reconciliation with <code class="font-mono text-[12px]">pyafipws</code>. Processing errors close to zero.</span></li>
+            <li class="flex gap-4"><span class="font-mono text-[10px] text-muted mt-1.5 tracking-widest shrink-0">02</span><span><span class="text-ink font-medium">Commercial intelligence</span>: extraction of SAS / SA / SRL records from the Official Gazette. 50+ qualified leads per week.</span></li>
+            <li class="flex gap-4"><span class="font-mono text-[10px] text-muted mt-1.5 tracking-widest shrink-0">03</span><span><span class="text-ink font-medium">Trademark monitoring</span>: phonetic and visual similarity with <em class="italic-serif">transformer embeddings</em>, FAISS-GPU and Elasticsearch.</span></li>
+            <li class="flex gap-4"><span class="font-mono text-[10px] text-muted mt-1.5 tracking-widest shrink-0">04</span><span><span class="text-ink font-medium">Bank reconciliation</span>: matching between bank statements and bookkeeping. From days to minutes.</span></li>
+          </ul>
+        </div>
+        <div class="bg-warm/40 p-8 md:p-10 border-t hairline">
+          <p class="eyebrow mb-4">In the client's words</p>
+          <blockquote class="text-ink text-lg md:text-xl leading-relaxed headline italic">
+            "They gave us back hours that used to disappear into repetitive work. The team stopped searching and started deciding."
+          </blockquote>
+          <p class="mt-4 text-sm text-muted font-mono">· Eguia Marcas y Patentes <span class="text-ink/40">· testimonial pending approval</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="py-28 md:py-40 relative overflow-hidden">
+  <svg class="absolute right-0 top-10 w-[400px] h-[400px] translate-x-1/3 opacity-30 pointer-events-none" viewBox="0 0 400 400" aria-hidden="true">
+    <g stroke="#0B1220" stroke-width="0.6" fill="none">
+      <rect x="40" y="40" width="320" height="320"/>
+      <rect x="80" y="80" width="240" height="240"/>
+      <rect x="120" y="120" width="160" height="160"/>
+      <rect x="160" y="160" width="80" height="80"/>
+    </g>
+  </svg>
+
+  <div class="relative max-w-[1280px] mx-auto px-6 md:px-10">
+    <div class="grid md:grid-cols-12 gap-12 md:gap-16">
+      <div class="md:col-span-5">
+        <p class="eyebrow mb-6">Process · 03</p>
+        <h2 class="headline text-4xl md:text-6xl">Four steps.<br/><span class="italic-serif">No endless</span> POCs.</h2>
+      </div>
+      <div class="md:col-span-7 border hairline rounded-2xl overflow-hidden bg-paper divide-y divide-rule">
+        <div class="p-8 md:p-10 grid grid-cols-12 gap-6 items-baseline hover:bg-white transition">
+          <div class="col-span-12 md:col-span-3 font-mono text-xs text-muted tracking-widest">01 · DAY 0</div>
+          <div class="col-span-12 md:col-span-9">
+            <h3 class="text-xl font-medium tracking-tight">Diagnostic</h3>
+            <p class="text-ink/70 mt-3 leading-relaxed">A 15-minute call. We map where AI actually moves the needle in your operation. No commitments, no 50-slide decks.</p>
+          </div>
+        </div>
+        <div class="p-8 md:p-10 grid grid-cols-12 gap-6 items-baseline hover:bg-white transition">
+          <div class="col-span-12 md:col-span-3 font-mono text-xs text-muted tracking-widest">02 · WEEK 1 TO 2</div>
+          <div class="col-span-12 md:col-span-9">
+            <h3 class="text-xl font-medium tracking-tight">Pilot pipeline</h3>
+            <p class="text-ink/70 mt-3 leading-relaxed">We build a real pipeline on your data, inside your stack. Production, not prototype. Fixed scope, fixed price, delivered in two weeks.</p>
+          </div>
+        </div>
+        <div class="p-8 md:p-10 grid grid-cols-12 gap-6 items-baseline hover:bg-white transition">
+          <div class="col-span-12 md:col-span-3 font-mono text-xs text-muted tracking-widest">03 · WEEK 3+</div>
+          <div class="col-span-12 md:col-span-9">
+            <h3 class="text-xl font-medium tracking-tight">Monitoring</h3>
+            <p class="text-ink/70 mt-3 leading-relaxed">Dashboards and alerts. You can see what is running, what failed, and what needs human review. No black boxes.</p>
+          </div>
+        </div>
+        <div class="p-8 md:p-10 grid grid-cols-12 gap-6 items-baseline hover:bg-white transition">
+          <div class="col-span-12 md:col-span-3 font-mono text-xs text-muted tracking-widest">04 · ONGOING</div>
+          <div class="col-span-12 md:col-span-9">
+            <h3 class="text-xl font-medium tracking-tight">Iteration</h3>
+            <p class="text-ink/70 mt-3 leading-relaxed">The pipeline improves with use. We tune it, add new cases, and scale to new processes once the first one is stable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW / RESEARCH -->
+<section id="why-now" class="relative py-28 md:py-40 bg-ink text-paper overflow-hidden">
+  <svg class="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <radialGradient id="warmGlow" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0%" stop-color="#D24B1F" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#D24B1F" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g stroke="#F7F5F0" stroke-width="0.4" fill="none" stroke-opacity="0.7">
+      <path d="M0 400 Q 360 200 720 400 T 1440 400"/>
+      <path d="M0 440 Q 360 240 720 440 T 1440 440"/>
+      <path d="M0 480 Q 360 280 720 480 T 1440 480"/>
+      <path d="M0 520 Q 360 320 720 520 T 1440 520"/>
+      <path d="M0 560 Q 360 360 720 560 T 1440 560"/>
+      <path d="M0 600 Q 360 400 720 600 T 1440 600"/>
+    </g>
+    <circle cx="1100" cy="300" r="220" fill="url(#warmGlow)"/>
+  </svg>
+
+  <div class="relative max-w-[1280px] mx-auto px-6 md:px-10 grid md:grid-cols-12 gap-12 items-start">
+    <div class="md:col-span-7">
+      <p class="eyebrow mb-6 text-paper/60">Research · 04</p>
+      <h2 class="headline text-4xl md:text-7xl">AI labor displacement <span class="italic-serif text-paper/70">has already begun.</span></h2>
+      <p class="mt-10 text-paper/80 text-lg leading-relaxed max-w-xl">
+        The firms and companies that automate their repetitive processes in the next 18 months are the ones that will have margin to grow. The rest end up competing against smaller, faster teams.
+      </p>
+      <p class="mt-4 text-paper/80 text-lg leading-relaxed max-w-xl">
+        This is not a hypothesis. It is what we are seeing across the clients already running pipelines. The edge is not AI itself; it is getting it into production before the firm next door.
+      </p>
+    </div>
+    <div class="md:col-span-5">
+      <div class="border border-paper/15 rounded-2xl p-8 md:p-10 bg-ink/40 backdrop-blur">
+        <p class="eyebrow text-paper/60 mb-5">Paper · UCEMA 2026</p>
+        <h3 class="headline text-2xl md:text-4xl leading-tight">"Labor displacement from AGI in emerging economies"</h3>
+        <p class="mt-8 text-paper/70 text-sm leading-relaxed">
+          Presented at the UCEMA Economic Analysis Seminar, moderated by Dr. Jorge M. Streb. The paper analyzes which task types are automated first and how professional employment restructures across Latin America.
+        </p>
+        <a href="https://ucema.edu.ar/evento/desplazamiento-laboral-por-agi" target="_blank" rel="noopener" class="mt-8 inline-flex items-center gap-2 text-paper text-sm font-medium border-b border-paper/40 pb-0.5 hover:border-paper">See the UCEMA presentation ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-28 md:py-40 relative">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10 grid md:grid-cols-12 gap-12 items-start">
+    <div class="md:col-span-5">
+      <div class="aspect-[4/5] bg-warm rounded-2xl overflow-hidden relative">
+        <picture>
+          <source srcset="foto-mateo.webp" type="image/webp" />
+          <img src="foto-mateo-optim.jpg" alt="Mateo Cafferata Pardina, founder of Forward Operators" loading="eager" decoding="async" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.nextElementSibling.style.display='flex';" />
+        </picture>
+        <div class="absolute inset-0 hidden items-center justify-center">
+          <svg class="absolute inset-0 w-full h-full opacity-60" viewBox="0 0 400 500" aria-hidden="true">
+            <g stroke="#0B1220" stroke-width="0.5" fill="none" stroke-opacity="0.5">
+              <circle cx="200" cy="200" r="80"/>
+              <circle cx="200" cy="200" r="120"/>
+              <circle cx="200" cy="200" r="160"/>
+              <path d="M80 380 Q200 300 320 380 L320 500 L80 500 Z"/>
+            </g>
+          </svg>
+          <div class="relative text-center">
+            <div class="w-24 h-24 rounded-full bg-ink text-paper flex items-center justify-center font-serif text-3xl mx-auto">MC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="md:col-span-7">
+      <p class="eyebrow mb-6">About · 05</p>
+      <h2 class="headline text-4xl md:text-6xl">Mateo Cafferata <span class="italic-serif">Pardina</span></h2>
+      <p class="mt-3 text-muted">Innovation and Development Engineer · AI Strategist</p>
+      <p class="mt-10 text-ink/80 text-lg leading-relaxed max-w-2xl">
+        I research the economic impact of AI and build the infrastructure that puts it into production. I work at the intersection between research and technical execution. I build what other people present in PowerPoint.
+      </p>
+      <p class="mt-4 text-ink/80 text-lg leading-relaxed max-w-2xl">
+        I presented my research on AGI labor displacement at UCEMA's <em class="italic-serif">Economic Analysis Seminar Series</em>, moderated by Dr. Jorge M. Streb. The paper uses the Acemoglu-Restrepo framework and a regression across 18 countries (R²=0.70) to argue that economies with high physical intensity, like Argentina, are structurally more resilient to cognitive automation.
+      </p>
+      <p class="mt-4 text-ink/80 text-lg leading-relaxed max-w-2xl">
+        In parallel, I designed and built the AI Strategist role from scratch at <span class="text-ink font-medium">Eguia Marcas y Patentes</span>, a third-generation firm with 30,000+ records and ISO 9001 certification. I started with an 8-page proposal, the director signed off, and today I run four AI pipelines in production there.
+      </p>
+      <dl class="mt-10 grid sm:grid-cols-2 gap-x-10 gap-y-5 max-w-2xl text-sm">
+        <div class="flex justify-between gap-6 border-b hairline pb-3"><dt class="text-muted">Education</dt><dd class="text-ink text-right">B.Eng. Innovation · Siglo 21</dd></div>
+        <div class="flex justify-between gap-6 border-b hairline pb-3"><dt class="text-muted">Certification</dt><dd class="text-ink text-right">Data Engineering · ICARO / UNC</dd></div>
+        <div class="flex justify-between gap-6 border-b hairline pb-3"><dt class="text-muted">Citizenship</dt><dd class="text-ink text-right">Argentina / USA</dd></div>
+        <div class="flex justify-between gap-6 border-b hairline pb-3"><dt class="text-muted">Languages</dt><dd class="text-ink text-right">Native Spanish · English C2</dd></div>
+      </dl>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href="https://linkedin.com/in/mateo-cafferata" target="_blank" rel="noopener" class="btn-ghost px-5 py-2.5 rounded-full text-sm font-medium">LinkedIn ↗</a>
+        <a href="https://ucema.edu.ar/evento/desplazamiento-laboral-por-agi" target="_blank" rel="noopener" class="btn-ghost px-5 py-2.5 rounded-full text-sm font-medium">UCEMA paper ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-28 md:py-40 bg-white border-y hairline">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10 grid md:grid-cols-12 gap-12">
+    <div class="md:col-span-4">
+      <p class="eyebrow mb-6">FAQ · 06</p>
+      <h2 class="headline text-4xl md:text-6xl">Frequently<br/><span class="italic-serif">asked.</span></h2>
+    </div>
+    <div class="md:col-span-8 divide-y hairline border-y hairline">
+      <details class="py-7 group">
+        <summary class="flex items-start justify-between gap-6">
+          <span class="font-medium text-lg md:text-xl text-ink">How much does it cost?</span>
+          <span class="chev text-2xl text-ink/40 leading-none" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-4 text-ink/70 leading-relaxed max-w-2xl">Diagnostic call: free. Two-week pilot: from USD 3,500. Full program (3 to 5 processes, 6 to 10 weeks): from USD 12,000. Fixed price agreed before we start. No usage fees, no escalating invoices.</p>
+      </details>
+      <details class="py-7 group">
+        <summary class="flex items-start justify-between gap-6">
+          <span class="font-medium text-lg md:text-xl text-ink">What about sensitive data? Does it go to OpenAI?</span>
+          <span class="chev text-2xl text-ink/40 leading-none" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-4 text-ink/70 leading-relaxed max-w-2xl">It depends. For public data (Official Gazette, INPI, AFIP) we use commercial APIs with no-training clauses. For case files, contracts or client data we run local models with zero egress. We sign an NDA and the architecture stays documented and auditable. If compliance requires it, we route you to Sovereign (dedicated infrastructure).</p>
+      </details>
+      <details class="py-7 group">
+        <summary class="flex items-start justify-between gap-6">
+          <span class="font-medium text-lg md:text-xl text-ink">Why not just use ChatGPT directly?</span>
+          <span class="chev text-2xl text-ink/40 leading-none" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-4 text-ink/70 leading-relaxed max-w-2xl">A chat helps you draft. A pipeline does the work without anyone copy-pasting and reviewing. It runs by itself, integrates with your systems, audits results, and scales without adding headcount. The difference shows up on your invoices.</p>
+      </details>
+      <details class="py-7 group">
+        <summary class="flex items-start justify-between gap-6">
+          <span class="font-medium text-lg md:text-xl text-ink">What if I already have an internal developer?</span>
+          <span class="chev text-2xl text-ink/40 leading-none" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-4 text-ink/70 leading-relaxed max-w-2xl">Even better. We work with your team, not around it. The goal of the program is for your developer to maintain and extend the pipeline after we leave. We hand off clean code, documented, with tests where they matter.</p>
+      </details>
+      <details class="py-7 group">
+        <summary class="flex items-start justify-between gap-6">
+          <span class="font-medium text-lg md:text-xl text-ink">Who owns the code?</span>
+          <span class="chev text-2xl text-ink/40 leading-none" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-4 text-ink/70 leading-relaxed max-w-2xl">You do, in a repo of yours, from day one. No vendor lock-in, no "you have to pay me to access your own system". You can continue solo, switch providers, or take the pipeline anywhere.</p>
+      </details>
+      <details class="py-7 group">
+        <summary class="flex items-start justify-between gap-6">
+          <span class="font-medium text-lg md:text-xl text-ink">What happens if the pilot does not work?</span>
+          <span class="chev text-2xl text-ink/40 leading-none" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-4 text-ink/70 leading-relaxed max-w-2xl">If we miss the agreed milestone in the agreed timeframe, the next sprint runs on our account. We would rather say no to a project than promise something we cannot deliver.</p>
+      </details>
+      <details class="py-7 group">
+        <summary class="flex items-start justify-between gap-6">
+          <span class="font-medium text-lg md:text-xl text-ink">Do you work with companies outside Argentina?</span>
+          <span class="chev text-2xl text-ink/40 leading-none" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-4 text-ink/70 leading-relaxed max-w-2xl">Yes. 100% remote operation, focused on Latin America and US time zones. The stack runs on any modern cloud (AWS, GCP, Azure) or on-prem.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- PRIVACY -->
+<section id="privacy" class="py-24 md:py-32 border-t hairline bg-paper">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10 grid md:grid-cols-12 gap-12">
+    <div class="md:col-span-4">
+      <p class="eyebrow mb-6">Privacy · 07</p>
+      <h2 class="headline text-4xl md:text-5xl">Your data <span class="italic-serif">is not</span> our data.</h2>
+    </div>
+    <div class="md:col-span-8 grid sm:grid-cols-2 gap-px bg-rule border hairline rounded-2xl overflow-hidden">
+      <div class="bg-paper p-7 md:p-8">
+        <div class="flex items-center gap-2 mb-3">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent" aria-hidden="true"><path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z"/></svg>
+          <p class="font-medium text-ink">Standard NDA</p>
+        </div>
+        <p class="text-sm text-ink/70 leading-relaxed">We sign an NDA before we see your data. The architecture is documented and auditable by you or your security team.</p>
+      </div>
+      <div class="bg-paper p-7 md:p-8">
+        <div class="flex items-center gap-2 mb-3">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          <p class="font-medium text-ink">Local models when they matter</p>
+        </div>
+        <p class="text-sm text-ink/70 leading-relaxed">Case files, contracts and sensitive data are processed on-prem or on dedicated infrastructure. No egress to third-party APIs.</p>
+      </div>
+      <div class="bg-paper p-7 md:p-8">
+        <div class="flex items-center gap-2 mb-3">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+          <p class="font-medium text-ink">Commercial APIs: no-training</p>
+        </div>
+        <p class="text-sm text-ink/70 leading-relaxed">When we use OpenAI, Anthropic or Google, we always do it under contracts that ban training on your data. No exceptions.</p>
+      </div>
+      <div class="bg-paper p-7 md:p-8">
+        <div class="flex items-center gap-2 mb-3">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent" aria-hidden="true"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 6v6l4 2"/></svg>
+          <p class="font-medium text-ink">Law 25.326 compatible</p>
+        </div>
+        <p class="text-sm text-ink/70 leading-relaxed">Personal data handled under Argentina's Personal Data Protection Law. Logs, retention policies and right-to-be-forgotten when applicable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOVEREIGN · 08 -->
+<section id="sovereign" class="relative py-28 md:py-40 bg-ink text-paper overflow-hidden">
+  <svg class="absolute inset-0 w-full h-full opacity-[0.05] pointer-events-none" aria-hidden="true">
+    <defs>
+      <pattern id="svg-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+        <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#F7F5F0" stroke-width="0.5"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#svg-grid)"/>
+  </svg>
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10 relative">
+    <div class="grid md:grid-cols-12 gap-12 items-end mb-16">
+      <div class="md:col-span-7">
+        <p class="eyebrow mb-6 text-paper/60">Sovereign · 08 · <span class="text-accent">In development</span></p>
+        <h2 class="headline text-4xl md:text-6xl leading-[0.95]">
+          Private <span class="italic-serif">inference</span><br/>
+          on <span class="italic-serif">your data.</span>
+        </h2>
+      </div>
+      <div class="md:col-span-5 md:pl-8">
+        <p class="text-paper/70 leading-relaxed text-lg">
+          For teams that do not want their case files, contracts or commercial pipelines traveling to a third-party API. Open models running on dedicated hardware that we operate in Argentina. No data egress, no vendor lock-in.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-px bg-paper/10 border hairline border-paper/10 rounded-2xl overflow-hidden">
+      <div class="p-8 md:p-10 bg-ink">
+        <p class="eyebrow text-paper/50 mb-4">01 · Hardware</p>
+        <h3 class="font-medium text-xl mb-3">Dedicated infrastructure</h3>
+        <p class="text-paper/60 text-sm leading-relaxed">NVIDIA DGX Spark clusters (128 GB Grace-Blackwell unified memory) operated by us. Capacity reserved per client, no noisy neighbors.</p>
+      </div>
+      <div class="p-8 md:p-10 bg-ink">
+        <p class="eyebrow text-paper/50 mb-4">02 · Models</p>
+        <h3 class="font-medium text-xl mb-3">Open weights, your control</h3>
+        <p class="text-paper/60 text-sm leading-relaxed">Llama, Qwen, DeepSeek and embedding models running on-prem. Fine-tuning on your data whenever you need it. No dependency on OpenAI, Anthropic or Google.</p>
+      </div>
+      <div class="p-8 md:p-10 bg-ink">
+        <p class="eyebrow text-paper/50 mb-4">03 · Zero egress</p>
+        <h3 class="font-medium text-xl mb-3">Your data never leaves the perimeter</h3>
+        <p class="text-paper/60 text-sm leading-relaxed">Dedicated VPN, auditable logs, no third-party telemetry. Suitable for firms with confidentiality obligations, personal data or sector compliance.</p>
+      </div>
+    </div>
+
+    <div class="mt-14 flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between border-t hairline border-paper/15 pt-10">
+      <div>
+        <p class="eyebrow text-paper/50 mb-2">Limited capacity · 2026 launch</p>
+        <p class="text-paper/80 max-w-xl">We are building the design waitlist. The first clients help shape how Sovereign is delivered, priced, and supported.</p>
+      </div>
+      <a href="#contact" class="btn-primary px-6 py-3 rounded-full text-sm font-medium bg-paper text-ink hover:bg-white">Join the waitlist →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="relative py-28 md:py-40 bg-paper border-t hairline overflow-hidden">
+  <svg class="absolute left-0 bottom-0 w-[420px] h-[420px] -translate-x-1/3 translate-y-1/4 opacity-40 pointer-events-none" viewBox="0 0 400 400" aria-hidden="true">
+    <g stroke="#0B1220" stroke-width="0.5" fill="none" stroke-opacity="0.4">
+      <circle cx="200" cy="200" r="180"/>
+      <circle cx="200" cy="200" r="120"/>
+      <circle cx="200" cy="200" r="60"/>
+    </g>
+  </svg>
+
+  <div class="relative max-w-[1280px] mx-auto px-6 md:px-10 grid md:grid-cols-12 gap-12 md:gap-20">
+    <div class="md:col-span-6">
+      <p class="eyebrow mb-6">Contact · 09</p>
+      <h2 class="headline text-4xl md:text-6xl leading-[0.95]">
+        Fifteen minutes. <br/>
+        <span class="italic-serif">No decks.</span> No pressure.
+      </h2>
+      <p class="mt-8 text-ink/75 leading-relaxed max-w-md">
+        A short call to figure out whether a pipeline makes sense for your firm. If it does not, we say so. If it does, we send a fixed-price proposal within 48 hours.
+      </p>
+      <ul class="mt-10 space-y-4 text-ink/80 text-sm">
+        <li class="flex items-start gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-accent shrink-0" aria-hidden="true"></span><span>Email: <a href="mailto:mateo@forwardoperators.us" class="underline-draw font-medium text-ink">mateo@forwardoperators.us</a></span></li>
+        <li class="flex items-start gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-accent shrink-0" aria-hidden="true"></span><span>LinkedIn: <a href="https://linkedin.com/in/mateo-cafferata" target="_blank" rel="noopener" class="underline-draw font-medium text-ink">mateo-cafferata ↗</a></span></li>
+        <li class="flex items-start gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-accent shrink-0" aria-hidden="true"></span><span>Based in Córdoba and Buenos Aires. Remote across Latin America and the US.</span></li>
+      </ul>
+    </div>
+    <div class="md:col-span-6">
+      <form class="border hairline rounded-3xl bg-white p-8 md:p-10 space-y-6" action="mailto:mateo@forwardoperators.us" method="post" enctype="text/plain" aria-label="Contact form">
+        <div class="grid sm:grid-cols-2 gap-6">
+          <label class="block text-sm">
+            <span class="eyebrow block mb-2">Your name</span>
+            <input required type="text" name="name" autocomplete="name" class="w-full border hairline rounded-lg px-4 py-3 bg-paper text-ink focus:outline-none focus:ring-2 focus:ring-ink/20" placeholder="Jane Doe" />
+          </label>
+          <label class="block text-sm">
+            <span class="eyebrow block mb-2">Work email</span>
+            <input required type="email" name="email" autocomplete="email" class="w-full border hairline rounded-lg px-4 py-3 bg-paper text-ink focus:outline-none focus:ring-2 focus:ring-ink/20" placeholder="jane@firm.com" />
+          </label>
+        </div>
+        <label class="block text-sm">
+          <span class="eyebrow block mb-2">Firm / Company</span>
+          <input type="text" name="company" autocomplete="organization" class="w-full border hairline rounded-lg px-4 py-3 bg-paper text-ink focus:outline-none focus:ring-2 focus:ring-ink/20" placeholder="Your firm" />
+        </label>
+        <label class="block text-sm">
+          <span class="eyebrow block mb-2">What are you trying to automate?</span>
+          <textarea name="message" rows="4" class="w-full border hairline rounded-lg px-4 py-3 bg-paper text-ink focus:outline-none focus:ring-2 focus:ring-ink/20" placeholder="Invoicing, reconciliation, document extraction, trademark monitoring..."></textarea>
+        </label>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
+          <p class="text-xs text-muted leading-relaxed max-w-sm">By submitting you agree to be contacted about your inquiry. We do not share your data with third parties.</p>
+          <button type="submit" class="btn-primary px-6 py-3 rounded-full text-sm font-medium shrink-0">Send message →</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-paper">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-16 md:py-20 grid md:grid-cols-12 gap-12">
+    <div class="md:col-span-5">
+      <a href="#top" class="flex items-center gap-3">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="10" stroke="#F7F5F0" stroke-width="1"/><path d="M6 11 L16 11 M11 6 L16 11 L11 16" stroke="#F7F5F0" stroke-width="1" stroke-linecap="round"/></svg>
+        <span class="font-medium tracking-tight">Forward Operators</span>
+      </a>
+      <p class="mt-6 text-paper/70 max-w-sm leading-relaxed text-sm">
+        Production AI pipelines for professional firms and mid-market companies. Fixed price, two weeks, code you own.
+      </p>
+    </div>
+    <div class="md:col-span-2">
+      <p class="eyebrow text-paper/50 mb-5">Site</p>
+      <ul class="space-y-3 text-sm text-paper/80">
+        <li><a href="#services" class="hover:text-paper">Services</a></li>
+        <li><a href="#case" class="hover:text-paper">Case study</a></li>
+        <li><a href="#process" class="hover:text-paper">Process</a></li>
+        <li><a href="#faq" class="hover:text-paper">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="md:col-span-2">
+      <p class="eyebrow text-paper/50 mb-5">More</p>
+      <ul class="space-y-3 text-sm text-paper/80">
+        <li><a href="#about" class="hover:text-paper">About</a></li>
+        <li><a href="#privacy" class="hover:text-paper">Privacy</a></li>
+        <li><a href="#sovereign" class="hover:text-paper">Sovereign</a></li>
+        <li><a href="#why-now" class="hover:text-paper">Research</a></li>
+      </ul>
+    </div>
+    <div class="md:col-span-3">
+      <p class="eyebrow text-paper/50 mb-5">Contact</p>
+      <ul class="space-y-3 text-sm text-paper/80">
+        <li><a href="mailto:mateo@forwardoperators.us" class="hover:text-paper">mateo@forwardoperators.us</a></li>
+        <li><a href="https://linkedin.com/in/mateo-cafferata" target="_blank" rel="noopener" class="hover:text-paper">LinkedIn ↗</a></li>
+        <li class="text-paper/60">Córdoba · Buenos Aires</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-paper/10">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-paper/60">
+      <p>© <span id="year">2026</span> Forward Operators. All rights reserved.</p>
+      <p class="font-mono">Built in Argentina. Shipped to LATAM and the US.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

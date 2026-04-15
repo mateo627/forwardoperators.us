@@ -30,6 +30,8 @@
 <meta name="twitter:image" content="https://forwardoperators.us/og.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://plausible.io" />
+<link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <script type="application/ld+json">
 {
@@ -126,7 +128,14 @@
   @media (prefers-reduced-motion: reduce) {
     .blob-1, .blob-2, .rotate-slow { animation: none; }
     html { scroll-behavior: auto; }
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
   }
+
+  [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); will-change: opacity, transform; }
+  [data-reveal].is-visible { opacity: 1; transform: none; }
+  [data-reveal-delay="1"] { transition-delay: .08s; }
+  [data-reveal-delay="2"] { transition-delay: .16s; }
+  [data-reveal-delay="3"] { transition-delay: .24s; }
 
   .grain {
     position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.4; mix-blend-mode: multiply;
@@ -278,6 +287,27 @@
         <span class="text-xs text-muted">· UCEMA 2026</span>
         <span class="ml-1 text-ink/60 group-hover:translate-x-0.5 transition inline-block" aria-hidden="true">↗</span>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- BY THE NUMBERS -->
+<section class="relative py-20 md:py-28" aria-label="By the numbers">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+    <p class="eyebrow mb-6" data-reveal>How we work · 02</p>
+    <div class="grid sm:grid-cols-3 gap-px bg-rule border hairline rounded-2xl overflow-hidden">
+      <div class="bg-paper p-8 md:p-10" data-reveal>
+        <p class="font-serif text-5xl md:text-6xl text-ink leading-none">2 weeks</p>
+        <p class="mt-4 text-sm text-ink/70 leading-relaxed">From kickoff to first pipeline in production. Fixed-price pilot.</p>
+      </div>
+      <div class="bg-paper p-8 md:p-10" data-reveal data-reveal-delay="1">
+        <p class="font-serif text-5xl md:text-6xl text-ink leading-none">0</p>
+        <p class="mt-4 text-sm text-ink/70 leading-relaxed">Usage fees, seat licenses, or vendor lock-in. You own the code from day one.</p>
+      </div>
+      <div class="bg-paper p-8 md:p-10" data-reveal data-reveal-delay="2">
+        <p class="font-serif text-5xl md:text-6xl text-ink leading-none">100%</p>
+        <p class="mt-4 text-sm text-ink/70 leading-relaxed">Auditable architecture. NDAs signed. Local models available for sensitive data.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -758,7 +788,9 @@
       </ul>
     </div>
     <div class="md:col-span-6">
-      <form class="border hairline rounded-3xl bg-white p-8 md:p-10 space-y-6" action="mailto:mateo@forwardoperators.us" method="post" enctype="text/plain" aria-label="Contact form">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?submitted=true" class="border hairline rounded-3xl bg-white p-8 md:p-10 space-y-6" aria-label="Contact form">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden"><label>Do not fill this: <input name="bot-field" /></label></p>
         <div class="grid sm:grid-cols-2 gap-6">
           <label class="block text-sm">
             <span class="eyebrow block mb-2">Your name</span>
@@ -781,6 +813,7 @@
           <p class="text-xs text-muted leading-relaxed max-w-sm">By submitting you agree to be contacted about your inquiry. We do not share your data with third parties.</p>
           <button type="submit" class="btn-primary px-6 py-3 rounded-full text-sm font-medium shrink-0">Send message →</button>
         </div>
+        <div id="form-success" class="hidden rounded-lg bg-ink/5 border hairline px-4 py-3 text-sm text-ink" role="status">Thanks. I read every message within 24 hours on business days.</div>
       </form>
     </div>
   </div>
@@ -793,51 +826,4 @@
   <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-16 md:py-20 grid md:grid-cols-12 gap-12">
     <div class="md:col-span-5">
       <a href="#top" class="flex items-center gap-3">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="10" stroke="#F7F5F0" stroke-width="1"/><path d="M6 11 L16 11 M11 6 L16 11 L11 16" stroke="#F7F5F0" stroke-width="1" stroke-linecap="round"/></svg>
-        <span class="font-medium tracking-tight">Forward Operators</span>
-      </a>
-      <p class="mt-6 text-paper/70 max-w-sm leading-relaxed text-sm">
-        Production AI pipelines for professional firms and mid-market companies. Fixed price, two weeks, code you own.
-      </p>
-    </div>
-    <div class="md:col-span-2">
-      <p class="eyebrow text-paper/50 mb-5">Site</p>
-      <ul class="space-y-3 text-sm text-paper/80">
-        <li><a href="#services" class="hover:text-paper">Services</a></li>
-        <li><a href="#case" class="hover:text-paper">Case study</a></li>
-        <li><a href="#process" class="hover:text-paper">Process</a></li>
-        <li><a href="#faq" class="hover:text-paper">FAQ</a></li>
-      </ul>
-    </div>
-    <div class="md:col-span-2">
-      <p class="eyebrow text-paper/50 mb-5">More</p>
-      <ul class="space-y-3 text-sm text-paper/80">
-        <li><a href="#about" class="hover:text-paper">About</a></li>
-        <li><a href="#privacy" class="hover:text-paper">Privacy</a></li>
-        <li><a href="#sovereign" class="hover:text-paper">Sovereign</a></li>
-        <li><a href="#why-now" class="hover:text-paper">Research</a></li>
-      </ul>
-    </div>
-    <div class="md:col-span-3">
-      <p class="eyebrow text-paper/50 mb-5">Contact</p>
-      <ul class="space-y-3 text-sm text-paper/80">
-        <li><a href="mailto:mateo@forwardoperators.us" class="hover:text-paper">mateo@forwardoperators.us</a></li>
-        <li><a href="https://linkedin.com/in/mateo-cafferata" target="_blank" rel="noopener" class="hover:text-paper">LinkedIn ↗</a></li>
-        <li class="text-paper/60">Córdoba · Buenos Aires</li>
-      </ul>
-    </div>
-  </div>
-  <div class="border-t border-paper/10">
-    <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-paper/60">
-      <p>© <span id="year">2026</span> Forward Operators. All rights reserved.</p>
-      <p class="font-mono">Built in Argentina. Shipped to LATAM and the US.</p>
-    </div>
-  </div>
-</footer>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-
-</body>
-</html>
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="10" stroke="#F7F5F0" stroke-width="1"/><path d="M6 11 L16 11 M11 6 L16 11 L11 16" stroke="#F7F5F0" stroke-width="1" stroke-linecap="round"/></s

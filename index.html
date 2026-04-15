@@ -110,7 +110,7 @@
 </script>
 <style>
   html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-  body { background: #F7F5F0; color: #0B1220; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  body { background: #F7F5F0; color: #0B1220; -webkit-font-smoothing: antialiased; overflow-x: clip; }
   :focus-visible { outline: 2px solid #D24B1F; outline-offset: 3px; border-radius: 2px; }
   a:focus-visible, button:focus-visible { outline-offset: 4px; }
   .headline { font-family: 'Instrument Serif', Georgia, serif; letter-spacing: -0.015em; line-height: 0.95; font-weight: 400; }
@@ -265,7 +265,7 @@
   </div>
 
   <div class="relative max-w-[1280px] mx-auto px-6 md:px-10 pt-24 md:pt-36 pb-24 md:pb-36">
-    <figure class="hidden lg:block absolute right-10 top-36 w-[220px] z-10" data-reveal>
+    <figure class="hidden lg:block absolute right-10 top-32 w-[260px] z-10">
       <div class="relative">
         <div class="aspect-[4/5] rounded-2xl overflow-hidden border hairline bg-warm shadow-[0_20px_60px_-20px_rgba(11,18,32,0.25)]">
           <img src="/assets/mateo.png" alt="Mateo Cafferata Pardina" loading="eager" decoding="async" class="w-full h-full object-cover" />
@@ -292,10 +292,10 @@
     </h1>
 
     <div class="mt-12 md:mt-16 grid md:grid-cols-12 gap-8 items-end">
-      <p class="md:col-span-6 text-lg md:text-xl text-ink/75 leading-relaxed max-w-[48ch]">
+      <p class="md:col-span-7 text-lg md:text-xl text-ink/75 leading-relaxed max-w-[52ch]">
         We build real AI pipelines for professional firms and companies across Latin America: invoicing, reconciliation, data extraction, commercial intelligence. Fixed price, two weeks, code you own.
       </p>
-      <div class="md:col-span-6 flex flex-wrap items-center gap-3 md:justify-end">
+      <div class="md:col-span-5 flex flex-wrap items-center gap-3 md:justify-end">
         <a href="#contact" class="btn-primary px-6 py-3 rounded-full text-sm font-medium">Book a 15-min call →</a>
         <a href="#case" class="btn-ghost px-6 py-3 rounded-full text-sm font-medium">See the Eguia case →</a>
       </div>
@@ -1038,4 +1038,5 @@
   var banner = document.getElementById('form-success');
   var form = document.querySelector('form[name="contact"]');
   if (banner) banner.classList.remove('hidden');
-  if (form) form.style.display 
+  if (form) form.style.display = 'none';
+  va

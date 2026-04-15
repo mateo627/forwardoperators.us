@@ -184,6 +184,7 @@
     </a>
     <nav class="hidden md:flex items-center gap-8 text-sm text-ink/75" aria-label="Main">
       <a href="#services" class="underline-draw">Services</a>
+      <a href="#pricing" class="underline-draw">Pricing</a>
       <a href="#case" class="underline-draw">Case study</a>
       <a href="#process" class="underline-draw">Process</a>
       <a href="#why-now" class="underline-draw">Research</a>
@@ -192,7 +193,25 @@
       <a href="#sovereign" class="underline-draw flex items-center gap-1.5">Sovereign <span class="text-[9px] tracking-wider px-1.5 py-0.5 rounded bg-accent/10 text-accent font-medium uppercase">Soon</span></a>
       <a href="#faq" class="underline-draw">FAQ</a>
     </nav>
-    <a href="#contact" class="btn-primary text-sm px-4 py-2 rounded-full">Book a call</a>
+    <div class="flex items-center gap-2">
+      <a href="#contact" class="btn-primary text-sm px-4 py-2 rounded-full">Book a call</a>
+      <button id="mobile-menu-btn" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border hairline" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 5 H16 M2 9 H16 M2 13 H16" stroke="#0B1220" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden border-t hairline bg-paper" role="menu">
+    <nav class="px-6 py-4 flex flex-col gap-3 text-sm text-ink/80" aria-label="Mobile">
+      <a href="#services" class="py-1.5" role="menuitem">Services</a>
+      <a href="#pricing" class="py-1.5" role="menuitem">Pricing</a>
+      <a href="#case" class="py-1.5" role="menuitem">Case study</a>
+      <a href="#process" class="py-1.5" role="menuitem">Process</a>
+      <a href="#why-now" class="py-1.5" role="menuitem">Research</a>
+      <a href="#about" class="py-1.5" role="menuitem">About</a>
+      <a href="#privacy" class="py-1.5" role="menuitem">Privacy</a>
+      <a href="#sovereign" class="py-1.5" role="menuitem">Sovereign</a>
+      <a href="#faq" class="py-1.5" role="menuitem">FAQ</a>
+    </nav>
   </div>
 </header>
 
@@ -392,6 +411,45 @@
           </div>
           <p class="mt-5 text-xs text-muted font-mono tracking-widest">OUTPUT</p>
           <p class="text-sm text-ink mt-1">Structured, inside your system</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="relative py-24 md:py-32 bg-warm/30 border-y hairline">
+  <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+    <div class="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
+      <div class="md:col-span-5">
+        <p class="eyebrow mb-6" data-reveal>Pricing · 03</p>
+        <h2 class="headline text-4xl md:text-6xl" data-reveal>Fixed price. <span class="italic-serif">No surprises.</span></h2>
+        <p class="mt-8 text-ink/70 leading-relaxed max-w-md" data-reveal>One scope, one number, two weeks. If we miss the milestone we agreed on, the next pipeline is on us. No retainers, no usage fees, no seat licenses.</p>
+      </div>
+      <div class="md:col-span-7">
+        <div class="border hairline rounded-3xl bg-paper overflow-hidden" data-reveal>
+          <div class="p-8 md:p-10 border-b hairline flex items-baseline justify-between flex-wrap gap-4">
+            <div>
+              <p class="eyebrow mb-3">Pilot pipeline</p>
+              <p class="font-serif text-5xl md:text-6xl text-ink leading-none">USD 4,500</p>
+              <p class="mt-3 text-sm text-muted">Single fee. Two-week delivery.</p>
+            </div>
+            <a href="#contact" class="btn-primary px-5 py-2.5 rounded-full text-sm font-medium">Start a pilot →</a>
+          </div>
+          <div class="p-8 md:p-10">
+            <p class="eyebrow mb-5">What you get</p>
+            <ul class="space-y-3 text-sm text-ink/80 leading-relaxed">
+              <li class="flex gap-3"><span class="text-accent mt-0.5" aria-hidden="true">→</span><span>Discovery session, architecture diagram, written scope.</span></li>
+              <li class="flex gap-3"><span class="text-accent mt-0.5" aria-hidden="true">→</span><span>One pipeline shipped to production in your stack.</span></li>
+              <li class="flex gap-3"><span class="text-accent mt-0.5" aria-hidden="true">→</span><span>Source code in a repository you own. No vendor lock-in.</span></li>
+              <li class="flex gap-3"><span class="text-accent mt-0.5" aria-hidden="true">→</span><span>Logging, alerts, and a runbook for your team.</span></li>
+              <li class="flex gap-3"><span class="text-accent mt-0.5" aria-hidden="true">→</span><span>Two weeks of post-launch support and tuning.</span></li>
+            </ul>
+          </div>
+          <div class="p-6 md:p-8 bg-white border-t hairline flex flex-wrap items-center justify-between gap-4">
+            <p class="text-xs text-muted font-mono tracking-widest">NEED SOMETHING LARGER?</p>
+            <p class="text-sm text-ink/80">Multi-pipeline programs and sovereign deployments are scoped on request.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -779,51 +837,4 @@
         <span class="italic-serif">No decks.</span> No pressure.
       </h2>
       <p class="mt-8 text-ink/75 leading-relaxed max-w-md">
-        A short call to figure out whether a pipeline makes sense for your firm. If it does not, we say so. If it does, we send a fixed-price proposal within 48 hours.
-      </p>
-      <ul class="mt-10 space-y-4 text-ink/80 text-sm">
-        <li class="flex items-start gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-accent shrink-0" aria-hidden="true"></span><span>Email: <a href="mailto:mateo@forwardoperators.us" class="underline-draw font-medium text-ink">mateo@forwardoperators.us</a></span></li>
-        <li class="flex items-start gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-accent shrink-0" aria-hidden="true"></span><span>LinkedIn: <a href="https://linkedin.com/in/mateo-cafferata" target="_blank" rel="noopener" class="underline-draw font-medium text-ink">mateo-cafferata ↗</a></span></li>
-        <li class="flex items-start gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-accent shrink-0" aria-hidden="true"></span><span>Based in Córdoba and Buenos Aires. Remote across Latin America and the US.</span></li>
-      </ul>
-    </div>
-    <div class="md:col-span-6">
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?submitted=true" class="border hairline rounded-3xl bg-white p-8 md:p-10 space-y-6" aria-label="Contact form">
-        <input type="hidden" name="form-name" value="contact" />
-        <p class="hidden"><label>Do not fill this: <input name="bot-field" /></label></p>
-        <div class="grid sm:grid-cols-2 gap-6">
-          <label class="block text-sm">
-            <span class="eyebrow block mb-2">Your name</span>
-            <input required type="text" name="name" autocomplete="name" class="w-full border hairline rounded-lg px-4 py-3 bg-paper text-ink focus:outline-none focus:ring-2 focus:ring-ink/20" placeholder="Jane Doe" />
-          </label>
-          <label class="block text-sm">
-            <span class="eyebrow block mb-2">Work email</span>
-            <input required type="email" name="email" autocomplete="email" class="w-full border hairline rounded-lg px-4 py-3 bg-paper text-ink focus:outline-none focus:ring-2 focus:ring-ink/20" placeholder="jane@firm.com" />
-          </label>
-        </div>
-        <label class="block text-sm">
-          <span class="eyebrow block mb-2">Firm / Company</span>
-          <input type="text" name="company" autocomplete="organization" class="w-full border hairline rounded-lg px-4 py-3 bg-paper text-ink focus:outline-none focus:ring-2 focus:ring-ink/20" placeholder="Your firm" />
-        </label>
-        <label class="block text-sm">
-          <span class="eyebrow block mb-2">What are you trying to automate?</span>
-          <textarea name="message" rows="4" class="w-full border hairline rounded-lg px-4 py-3 bg-paper text-ink focus:outline-none focus:ring-2 focus:ring-ink/20" placeholder="Invoicing, reconciliation, document extraction, trademark monitoring..."></textarea>
-        </label>
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
-          <p class="text-xs text-muted leading-relaxed max-w-sm">By submitting you agree to be contacted about your inquiry. We do not share your data with third parties.</p>
-          <button type="submit" class="btn-primary px-6 py-3 rounded-full text-sm font-medium shrink-0">Send message →</button>
-        </div>
-        <div id="form-success" class="hidden rounded-lg bg-ink/5 border hairline px-4 py-3 text-sm text-ink" role="status">Thanks. I read every message within 24 hours on business days.</div>
-      </form>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- FOOTER -->
-<footer class="bg-ink text-paper">
-  <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-16 md:py-20 grid md:grid-cols-12 gap-12">
-    <div class="md:col-span-5">
-      <a href="#top" class="flex items-center gap-3">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="10" stroke="#F7F5F0" stroke-width="1"/><path d="M6 11 L16 11 M11 6 L16 11 L11 16" stroke="#F7F5F0" stroke-width="1" stroke-linecap="round"/></s
+        A short call to f

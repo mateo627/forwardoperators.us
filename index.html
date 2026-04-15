@@ -962,6 +962,28 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
+<script>
+(function(){
+  var btn = document.getElementById('mobile-menu-btn');
+  var menu = document.getElementById('mobile-menu');
+  if (!btn || !menu) return;
+  function setOpen(open){
+    menu.classList.toggle('hidden', !open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  btn.addEventListener('click', function(){
+    setOpen(menu.classList.contains('hidden'));
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ setOpen(false); });
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && !menu.classList.contains('hidden')) setOpen(false);
+  });
+})();
+</script>
+
 <div id="sticky-cta" class="md:hidden fixed bottom-3 inset-x-3 z-50 hidden">
   <a href="#contact" class="flex items-center justify-between gap-3 rounded-full bg-ink text-paper px-5 py-3.5 shadow-[0_10px_30px_-10px_rgba(11,18,32,0.6)]">
     <span class="text-sm font-medium">Book a 15-min call</span>
@@ -1017,26 +1039,4 @@
     var id = a.getAttribute('href').slice(1);
     if (id) map[id] = a;
   });
-  var sections = Object.keys(map).map(function(id){ return document.getElementById(id); }).filter(Boolean);
-  var current = null;
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting) {
-        if (current) current.classList.remove('is-active');
-        current = map[e.target.id];
-        if (current) current.classList.add('is-active');
-      }
-    });
-  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-  sections.forEach(function(sec){ io.observe(sec); });
-})();
-</script>
-
-<script>
-(function(){
-  if (location.search.indexOf('submitted=true') === -1) return;
-  var banner = document.getElementById('form-success');
-  var form = document.querySelector('form[name="contact"]');
-  if (banner) banner.classList.remove('hidden');
-  if (form) form.style.display = 'none';
-  va
+  var sections = Object.keys(map).map(function(id){ return document.getElementById(id); }).filter(B

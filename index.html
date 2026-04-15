@@ -131,8 +131,8 @@
     [data-reveal] { opacity: 1 !important; transform: none !important; }
   }
 
-  [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); will-change: opacity, transform; }
-  [data-reveal].is-visible { opacity: 1; transform: none; }
+  [data-reveal]:not(.is-visible) { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); will-change: opacity, transform; }
+  [data-reveal].is-visible { opacity: 1 !important; transform: none !important; transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
   [data-reveal-delay="1"] { transition-delay: .08s; }
   [data-reveal-delay="2"] { transition-delay: .16s; }
   [data-reveal-delay="3"] { transition-delay: .24s; }
@@ -631,7 +631,7 @@
 <section id="about" class="py-28 md:py-40 relative">
   <div class="max-w-[1280px] mx-auto px-6 md:px-10 grid md:grid-cols-12 gap-12 items-start">
     <div class="md:col-span-5">
-      <div class="aspect-[4/5] bg-warm rounded-2xl overflow-hidden relative" data-reveal>
+      <div class="aspect-[4/5] bg-warm rounded-2xl overflow-hidden relative">
         <picture>
           <img src="/assets/mateo.png" alt="Mateo Cafferata Pardina, founder of Forward Operators" loading="eager" decoding="async" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.nextElementSibling.style.display='flex';" />
         </picture>
@@ -982,6 +982,15 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   els.forEach(function(e){ io.observe(e); });
+  // Safety: force visibility after 2s even if observer fails
+  setTimeout(function(){
+    els.forEach(function(e){
+      if (!e.classList.contains('is-visible')) {
+        var rect = e.getBoundingClientRect();
+        if (rect.top < window.innerHeight) e.classList.add('is-visible');
+      }
+    });
+  }, 2000);
 })();
 </script>
 </body>

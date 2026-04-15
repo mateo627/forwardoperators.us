@@ -109,8 +109,10 @@
   };
 </script>
 <style>
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
   body { background: #F7F5F0; color: #0B1220; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  :focus-visible { outline: 2px solid #D24B1F; outline-offset: 3px; border-radius: 2px; }
+  a:focus-visible, button:focus-visible { outline-offset: 4px; }
   .headline { font-family: 'Instrument Serif', Georgia, serif; letter-spacing: -0.015em; line-height: 0.95; font-weight: 400; }
   .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #5B6470; }
   .hairline { border-color: #E4E1D8; }
@@ -1036,10 +1038,4 @@
   var banner = document.getElementById('form-success');
   var form = document.querySelector('form[name="contact"]');
   if (banner) banner.classList.remove('hidden');
-  if (form) form.style.display = 'none';
-  var target = banner || document.getElementById('contact');
-  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-})();
-</script>
-</body>
-</html>
+  if (form) form.style.display 

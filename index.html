@@ -1036,4 +1036,38 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   els.forEach(function(e){ io.observe(e); });
   setTimeout(function(){
-    els.forEach(funct
+    els.forEach(function(e){
+      if (!e.classList.contains('is-visible')) {
+        var rect = e.getBoundingClientRect();
+        if (rect.top < window.innerHeight) e.classList.add('is-visible');
+      }
+    });
+  }, 2000);
+})();
+</script>
+
+<script>
+(function(){
+  var navLinks = document.querySelectorAll('nav[aria-label="Main"] a[href^="#"]');
+  if (!navLinks.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  navLinks.forEach(function(a){
+    var id = a.getAttribute('href').slice(1);
+    if (id) map[id] = a;
+  });
+  var sections = Object.keys(map).map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var current = null;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        if (current) current.classList.remove('is-active');
+        current = map[e.target.id];
+        if (current) current.classList.add('is-active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+  sections.forEach(function(sec){ io.observe(sec); });
+})();
+</script>
+</body>
+</html>
